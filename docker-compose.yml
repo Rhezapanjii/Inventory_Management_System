@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  inventory_management_system:
+    image: inventory_management_system:latest
+    container_name: inventory_management_system
+    ports:
+      - "80:80"
+    depends_on:
+      - database
+
+  database:
+    image: mysql:8.0.28
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: inventory_management_system
+    ports:
+      - "3306:3306/tcp"
